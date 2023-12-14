@@ -1,41 +1,41 @@
-class StringProbe {
-  String reverse() {
-    String words = "welcome";
+// class StringProbe {
+//   String reverse() {
+//     String words = "welcome";
 
-    String res = words.split("").reversed.join();
+//     String res = words.
 
-    return res;
-  }
-  String replace() {
-    String words = "BROTOTYPE";
-    String key = "T";
+//     return res;
+//   }
+//   String replace() {
+//     String words = "BROTOTYPE";
+//     String key = "T";
 
-    List<String> word = words.split("");
+//     List<String> word = words.split("");
 
-    for (int i = 0; i < word.length; i++) {
-      if (word[i] == key) {
-        word[i] = "\$";
-      }
-    }
+//     for (int i = 0; i < word.length; i++) {
+//       if (word[i] == key) {
+//         word[i] = "\$";
+//       }
+//     }
 
-    return word.join();
-  }
+//     return word.join();
+//   }
 
-  String toUpper(){
-    String words ="brototype";
+//   String toUpper(){
+//     String words ="brototype";
 
-    words[0].toUpperCase()+words.substring(2);
+//     words[0].toUpperCase()+words.substring(2);
 
-    return words;
-  }
-}
+//     return words;
+//   }
+// }
 
 
 
-void main() {
-  StringProbe str = StringProbe();
+// void main() {
+//   StringProbe str = StringProbe();
 
-  print(str.reverse());
-  print(str.replace());
-  print(str.toUpper());
-}
+//   print(str.reverse());
+//   print(str.replace());
+//   print(str.toUpper());
+// }
