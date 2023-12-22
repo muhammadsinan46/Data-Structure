@@ -1,70 +1,53 @@
 import 'dart:collection';
 
-class TrieNode{
-
-  HashMap children =HashMap();
+class TrieNode {
+  HashMap children = HashMap();
 }
 
-class Trie{
-
+class Trie {
   TrieNode root = TrieNode();
   String end = "*";
 
-  Trie(String  str){
+  Trie(String str) {
     populateSuffixTrie(str);
-
   }
-
-
-  void populateSuffixTrie(String str){
-
-  
-
-    for(int i=0;i<str.length;i++){
+  void populateSuffixTrie(String str) {
+    for (int i = 0; i < str.length; i++) {
       insertSubstringAt(i, str);
-
     }
-
   }
 
-  void insertSubstringAt(int index, String str){
-    TrieNode temp =root;
+  void insertSubstringAt(int index, String str) {
+    TrieNode temp = root;
 
-    for(int i=index;i<str.length;i++){
-
-      
-      if(!temp.children.containsKey(str[i])){
-                TrieNode newNode =TrieNode();
-        temp.children[str[i]]= newNode;
-      
-
-
+    for (int i = index; i < str.length; i++) {
+      if (!temp.children.containsKey(str[i])) {
+        TrieNode newNode = TrieNode();
+        temp.children[str[i]] = newNode;
       }
-          temp = temp.children[str[i]];
+      temp = temp.children[str[i]];
     }
-      temp.children[end]=TrieNode();
-
-
-
+    temp.children[end] = TrieNode();
   }
-      bool contains(String str){
-      TrieNode temp = root;
 
-      for(int i=0;i<str.length;i++){
-        if(!temp.children.containsKey(str[i])){
-         
-             return false;
-        }
-         temp = temp.children[str[i]];
+  bool contains(String str) {
+    TrieNode temp = root;
+
+    for (int i = 0; i < str.length; i++) {
+
+    if(  temp.children[str[i]] ==null)
+      if (!temp.children.containsKey(str[i])) {
+        return false;
       }
-
-      return temp.children.containsKey(end);
+      temp = temp.children[str[i]];
     }
+
+    return temp.children.containsKey(end);
+  }
 }
 
-void main(){
+void main() {
   Trie newTrie = Trie("farhan");
 
-print(newTrie.contains("arhan"));
-
-  }
+  print(newTrie.contains("arhan"));
+}

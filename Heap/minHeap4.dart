@@ -1,32 +1,35 @@
-class Heap3 {
+class Heap {
   List<int> heapArray = [];
-  Heap3(List<int> arr) {
-    build(arr);
+
+  Heap(List<int> arr) {
+    buid(arr);
   }
-  void build(List<int> arr) {
+
+  buid(List<int> arr) {
     heapArray = arr;
 
-    for (int i = parent(heapArray.length - 1); i >= 0; i--) {
+    for (int i = parent(arr.length - 1); i >= 0; i--) {
       shiftDown(i);
     }
   }
 
   void shiftDown(int cuIdx) {
     int endIdx = heapArray.length - 1;
-    int leftIdx = leftChild(cuIdx);
+    int leftidx = leftChild(cuIdx);
 
-    while (leftIdx <= endIdx) {
+    while (leftidx <= endIdx) {
       int rightIdx = rightChild(cuIdx);
       int idxToShift;
-      if (rightIdx <= endIdx && heapArray[rightIdx] < heapArray[leftIdx]) {
+
+      if (rightIdx <= endIdx && heapArray[rightIdx] < heapArray[leftidx]) {
         idxToShift = rightIdx;
       } else {
-        idxToShift = leftIdx;
+        idxToShift = leftidx;
       }
       if (heapArray[cuIdx] > heapArray[idxToShift]) {
         swap(heapArray, cuIdx, idxToShift);
         cuIdx = idxToShift;
-        leftIdx = leftChild(cuIdx);
+        leftidx = leftChild(cuIdx);
       } else {
         return;
       }
@@ -36,7 +39,6 @@ class Heap3 {
   void shiftUp(int cuIdx) {
     int parentIdx = parent(cuIdx);
     while (cuIdx > 0 && heapArray[parentIdx] > heapArray[cuIdx]) {
-      swap(heapArray, cuIdx, parentIdx);
       cuIdx = parentIdx;
       parentIdx = parent(cuIdx);
     }
@@ -47,7 +49,7 @@ class Heap3 {
     shiftUp(heapArray.length - 1);
   }
 
-  void remove() {
+  void delete() {
     swap(heapArray, 0, heapArray.length - 1);
     heapArray.remove(heapArray.length - 1);
     shiftDown(0);
@@ -79,12 +81,10 @@ class Heap3 {
 }
 
 void main() {
-  List<int> arr =[8,7,45,2,14,5,25];
+  List<int> arr = [8, 7, 45, 2, 14, 5, 25];
+  Heap heap = Heap(arr);
 
-  Heap3 heap = Heap3(arr);
+  heap.buid(arr);
 
-  heap.build(arr);
-
-  //heap.insert(67);
   heap.display();
 }

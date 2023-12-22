@@ -10,7 +10,7 @@ class MinHeap {
       shiftDown(i);
     }
   }
-
+  
   void shiftDown(int cuIdx) {
     int endIdx = heap.length - 1;
     int leftIdx = leftChild(cuIdx);
@@ -28,7 +28,7 @@ class MinHeap {
       if (heap[cuIdx] > heap[idxToShift]) {
         swap(heap, cuIdx, idxToShift);
         cuIdx = idxToShift;
-        leftIdx = leftChild(cuIdx);
+        idxToShift= leftChild(cuIdx);
       } else {
         return;
       }
@@ -60,7 +60,7 @@ class MinHeap {
   }
 
   int parent(int i) {
-    return (i - 1 )~/ 2;
+    return (i - 1 )~/ 2;  
   }
 
   int leftChild(int i) {
